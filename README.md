@@ -1,5 +1,5 @@
 # Animal Center
-
+<img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YW5pbWFsc3xlbnwwfHwwfHx8MA%3D%3D" alt="drawing" width="500"/>
 
 ## Exploratory Data Analysis with Python
 
@@ -63,10 +63,22 @@ Extract words into a new column. I wasn't satisfied with the SEX_UPON_INTAKE col
 ```python
 df['New_Sex'] = df['Sex upon Intake'].str.extract(r'(Male|Female|Unknown)')
 ```
+Find the total number of animals brought in each year.
+```python
+df['Year'] = df['DateTime'].dt.year #extract only the year into a new column
+
+df.groupby(['Year','Animal Type']).size()
+```
 
 I also converted the _Age_upon_Intake_ column to weeks and extracted into a new column, as this would be useful for visualizations. Any value above 200 means the animal is 3 years or older.
 
-With these, I could visualize the data for Insights
+With these, I could visualize the following for Insights:
+- Total number of animals in the shlter
+- Animals brought in by their conditions (normal, sick, injured, etc)
+- Percentage of the types of animals taken in (stray, wildlifee, abandoned, etc)
+- Age upon Intake (in weeks)
+- Sex of animals (male, female)
+- Total number of animals brought in yearly
 
 
   
